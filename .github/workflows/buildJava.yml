@@ -1,0 +1,20 @@
+name: Java CI with Maven - Test and package
+
+on:
+    pull_request:
+        branches: [main]
+
+jobs:
+    build:
+        name: Test and build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v7
+            - name: Setup Java
+              uses: actions/setup-java@v4
+              with:
+                  distribution: 'coretto'
+                  java-version: '21'
+            - name: Build
+              run: mvn -B package
