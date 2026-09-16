@@ -16,7 +16,5 @@ jobs:
               with:
                   distribution: 'corretto'
                   java-version: '21'
-            - name: Code quality
-              run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
             - name: Build
-              run: mvn -B package
+              run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
