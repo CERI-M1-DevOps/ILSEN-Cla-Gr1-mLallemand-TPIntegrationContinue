@@ -11,6 +11,7 @@ permissions:
 jobs:
   javadoc:
     name: Generate JavaDoc
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,13 +19,14 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v5
         with:
-          distribution: 'corretto'
-          java-version: '21'
-          cache: 'maven'
+          distribution: "corretto"
+          java-version: "21"
+          cache: "maven"
       - name: Generate JavaDoc
-        run:  mvn -B javadoc::javadoc
+        run: mvn -B javadoc:javadoc
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_branch: gh-pages
+          publish_dir: ./target/site/apidocs
