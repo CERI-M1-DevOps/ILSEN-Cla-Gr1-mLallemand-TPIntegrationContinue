@@ -10,7 +10,7 @@ public class ListeSimple {
 
     /**
      * Ajoute un élément à la liste
-     * @param element
+     * @param element l'élément à ajouter
      */
     public void ajout(int element) {
         tete = new Noeud(element, tete);
@@ -19,8 +19,8 @@ public class ListeSimple {
 
     /**
      * Modifie le premier élément de la liste qui correspond à l'élément donné
-     * @param element
-     * @param nouvelleValeur
+     * @param element l'élément à modifier
+     * @param nouvelleValeur la nouvelle valeur
      */
     public void modifiePremier(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
@@ -32,8 +32,8 @@ public class ListeSimple {
 
     /**
      * Modifie tous les éléments de la liste qui correspondent à l'élément donné
-     * @param element
-     * @param nouvelleValeur
+     * @param element l'élément à modifier
+     * @param nouvelleValeur la nouvelle valeur
      */
     public void modifieTous(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
@@ -59,7 +59,7 @@ public class ListeSimple {
 
     /**
      * Supprime le premier élément de la liste qui correspond à l'élément donné
-     * @param element
+     * @param element l'élément à supprimer
      */
     public void supprimePremier(Object element) {
         if (tete != null) {
@@ -83,7 +83,7 @@ public class ListeSimple {
 
     /**
      * Supprime tous les éléments de la liste qui correspondent à l'élément donné
-     * @param element
+     * @param element l'élément à supprimer
      */
     public void supprimeTous(int element) {
         tete = supprimeTousRecurs(element, tete);
