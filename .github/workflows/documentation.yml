@@ -1,0 +1,28 @@
+name: JavaDoc
+
+on:
+  pull_request:
+    branches: [main]
+    types:
+      - closed
+
+jobs:
+  javadoc:
+    name: Generate JavaDoc
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+          cache: 'maven'
+      - name: Generate JavaDoc
+        run:  mvn -B javadoc::javadoc
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
